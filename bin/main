@@ -30,14 +30,14 @@ def player
   puts " #{player_x} is on position #{player_x_input} "
 
   # Player 2's Turn
-  #   puts "Player2\'s Turn: Choose from (1-9)"
+  puts "Player2\'s Turn: Choose from (1-9)"
 
-  #   # Player2 is O
-  #   player_o = 'O'
+  # Player2 is O
+  player_o = 'O'
 
-  #   # input (1-9) from player 2
-  #   player_o_input = gets.chomp
+  # input (1-9) from player 2
+  player_o_input = gets.chomp
 
-  #   # Display O is on Choosen Position 1 -9 if position is occupied then display Error
-  #   puts " #{player_o} is on position #{player_o_input} "
+  # Display O is on Choosen Position 1 -9 if position is occupied then display Error
+  puts " #{player_o} is on position #{player_o_input} "
 end
