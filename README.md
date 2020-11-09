@@ -64,7 +64,7 @@ Give a ⭐️ if you like this project!
 
 ## License
 
-This project is [MIT]() licensed.
+This project is [MIT](https://github.com/IjayAbby/Tic-Tac-Toe/blob/feature/LICENSE) licensed.
 
 ## Authors
 
