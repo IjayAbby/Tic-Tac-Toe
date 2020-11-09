@@ -7,9 +7,9 @@
 <!-- This project is based on the . -->
 
 This Project is about Building Tic-tac-toe game using OOP concept of Ruby.
-Tic-Tac-Toe game is paper-pen game which requiers two players to play game Player1 can be 'X' and player2 can be 'O'. It uses 3X3 grids which has 9 moves for both players to complete the Game.
-Any one of the player can win the game if he/she has got all 'X' or 'O' in any one of the possible postion i.e first Row, Middle Row, last Row, First Column, Middle Column, last column, left Diagonal and Right Diagonal.
-The project requires to complete different milestone:
+Tic-Tac-Toe game is paper-pen game which requires two players to play game Player1 can be 'X' and player2 can be 'O'. It uses 3X3 grids which has 9 moves for both players to complete the Game.
+Any one of the player can win the game if he/she has got all 'X' or 'O' in any one of the possible position i.e first Row, Middle Row, last Row, First Column, Middle Column, last column, left Diagonal and Right Diagonal.
+This project requires to complete the following milestones:
 
 - OOP-Milestone: Setup
 - OOP-Milestone: User interface
@@ -32,9 +32,10 @@ The project requires to complete different milestone:
 
 - [Ruby](https://www.ruby-lang.org/en/)
 
+
 ## Live Demo
 
-[Live Demo Link]()
+[Live Demo Link](https://repl.it/@IjayAbby/Tic-Tac-Toe)
 
 ## Getting Started
 
@@ -63,15 +64,15 @@ Give a ⭐️ if you like this project!
 
 ## License
 
-This project is [MIT](./LICENCE) licensed.
+This project is [MIT]() licensed.
 
 ## Authors
 
-👤 \*\* \*\*
+👤 **Ijay Abby**
 
-- GitHub: []()
-- Twitter: []()
-- LinkedIn: []()
+- Github: [@IjayAbby](https://github.com/IjayAbby)
+- Twitter: [@Ijay_js](https://twitter.com/Ijay_js)
+- LinkedIn: [Abigael Nyangasi](https://www.linkedin.com/in/ijayabby4/)
 
 👤 **Divyesh Patel**
 
@@ -81,4 +82,4 @@ This project is [MIT](./LICENCE) licensed.
 
 ## Acknowledgments
 
-- [Ruby-doc](https://ruby-doc.org/core-2.6.5/Enumerable.html)
+- [Ruby-doc](https://ruby-doc.org/core-2.6.5)
