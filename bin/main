@@ -41,3 +41,5 @@ def player
   # Display O is on Choosen Position 1 -9 if position is occupied then display Error
   puts " #{player_o} is on position #{player_o_input} "
 end
+
+player
