@@ -1,2 +1,43 @@
 #!/usr/bin/env ruby
-puts 'Hello World'
+# puts 'Hello World'
+
+# Need 2 players
+# player1's turn (X)
+# choose 1-9 ==> 2 'X'
+# player2's turn (O)
+# choose 1-9 ==> 3 'O'
+
+def player
+  puts 'Welcome To Tic-Tac-Toe Game'
+  puts '  ___ ___ ___  '
+  puts ' | 1 | 2 | 3 | '
+  puts ' |___|___|___| '
+  puts ' | 4 | 5 | 6 | '
+  puts ' |___|___|___| '
+  puts ' | 7 | 8 | 9 | '
+  puts ' |___|___|___| '
+
+  # Displays Player 1's Turn
+  puts 'Player1\'s Turn: Choose from (1-9)'
+
+  # player1 is X
+  player_x = 'X'
+
+  # Player 1 Inputs
+  player_x_input = gets.chomp
+
+  # Display X is on choosen Position 1-9
+  puts " #{player_x} is on position #{player_x_input} "
+
+  # Player 2's Turn
+  #   puts "Player2\'s Turn: Choose from (1-9)"
+
+  #   # Player2 is O
+  #   player_o = 'O'
+
+  #   # input (1-9) from player 2
+  #   player_o_input = gets.chomp
+
+  #   # Display O is on Choosen Position 1 -9 if position is occupied then display Error
+  #   puts " #{player_o} is on position #{player_o_input} "
+end
