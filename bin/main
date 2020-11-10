@@ -1,45 +1,64 @@
 #!/usr/bin/env ruby
-# puts 'Hello World'
+require_relative '../lib/board'
 
-# Need 2 players
-# player1's turn (X)
-# choose 1-9 ==> 2 'X'
-# player2's turn (O)
-# choose 1-9 ==> 3 'O'
+class TicTacToe
+  def initialize
+    banner
+  end
 
-def player
-  puts 'Welcome To Tic-Tac-Toe Game'
-  puts '  ___ ___ ___  '
-  puts ' | 1 | 2 | 3 | '
-  puts ' |___|___|___| '
-  puts ' | 4 | 5 | 6 | '
-  puts ' |___|___|___| '
-  puts ' | 7 | 8 | 9 | '
-  puts ' |___|___|___| '
+  def banner
+    puts 'Welcome To Tic-Tac-Toe Game'
+    puts '  ___ ___ ___  '
+    puts ' | 1 | 2 | 3 | '
+    puts ' |___|___|___| '
+    puts ' | 4 | 5 | 6 | '
+    puts ' |___|___|___| '
+    puts ' | 7 | 8 | 9 | '
+    puts ' |___|___|___| '
+    puts '               '
+  end
 
-  # Displays Player 1's Turn
-  puts 'Player1\'s Turn: Choose from (1-9)'
+  def run
+    player_x = Player.new
+    player_o = Player.new
+    puts "Player #{player_x.name} - #{player_x.symbol} \n Player #{player_o.name} - #{player_o.symbol} "
+    puts ''
 
-  # player1 is X
-  player_x = 'X'
-
-  # Player 1 Inputs
-  player_x_input = gets.chomp
-
-  # Display X is on choosen Position 1-9
-  puts " #{player_x} is on position #{player_x_input} "
-
-  # Player 2's Turn
-  puts "Player2\'s Turn: Choose from (1-9)"
-
-  # Player2 is O
-  player_o = 'O'
-
-  # input (1-9) from player 2
-  player_o_input = gets.chomp
-
-  # Display O is on Choosen Position 1 -9 if position is occupied then display Error
-  puts " #{player_o} is on position #{player_o_input} "
+    board = Board.new(player_x, player_o)
+    board.run_game
+  end
 end
 
-player
+class Player
+  attr_reader :name, :symbol
+
+  def initialize
+    @@total_player = if !defined?(@@total_player)
+                       1
+                     else
+                       2
+                     end
+
+    get_name
+    get_symbol
+  end
+
+  def get_name
+    # Add for the players Name
+    if @@total_player == 1
+      puts 'Enter Player1 Name'
+      @name = gets.chomp.upcase
+    elsif @@total_player == 2
+      puts 'Enter Player2 Name'
+      @name = gets.chomp.upcase
+    end
+  end
+
+  def get_symbol
+    # Add Symbol to each player e.g if player1 = X and player2 = O
+    @symbol = @@total_player == 1 ? 'X' : 'O'
+  end
+end
+
+start = TicTacToe.new
+start.run
