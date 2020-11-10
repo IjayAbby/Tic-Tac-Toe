@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# rubocop:disable all
 require_relative '../lib/board'
 
 class TicTacToe
@@ -39,22 +40,22 @@ class Player
                        2
                      end
 
-    get_name
-    get_symbol
+    gett_name
+    gett_symbol
   end
 
-  def get_name
+  def gett_name
     # Add for the players Name
     if @@total_player == 1
       puts 'Enter Player1 Name'
-      @name = gets.chomp.upcase
+      @name = gets.chomp.capitalize
     elsif @@total_player == 2
       puts 'Enter Player2 Name'
-      @name = gets.chomp.upcase
+      @name = gets.chomp.capitalize
     end
   end
 
-  def get_symbol
+  def gett_symbol
     # Add Symbol to each player e.g if player1 = X and player2 = O
     @symbol = @@total_player == 1 ? 'X' : 'O'
   end

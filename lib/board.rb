@@ -8,7 +8,7 @@ class Board
   def run_game
     empty
     puts 'Start the Game'
-    display_board(@check_box)
+    display_number
     # This method will invoke at the beging of the game from  main class
   end
 
@@ -29,35 +29,26 @@ class Board
 
   def display_board(board)
     # this method will Display the Board
-    puts ' ___ ___ ___'
-    (0..2).each do |i|
-      print "|_#{board[i]}_"
-    end
-    puts '|'
-    (3..5).each do |i|
-      print "|_#{board[i]}_"
-    end
-    puts '|'
-    (6..8).each do |i|
-      print "|_#{board[i]}_"
-    end
-    puts '|'
-    puts ' '
   end
 
   def display_number
     # This method will Display the numbers inside the Board.
+    puts ' ___ ___ ___'
+    puts '|_1_ _2_ _3_|'
+    puts '|_4_ _5_ _6_|'
+    puts '|_7_ _8_ _9_|'
+    puts '|___ ___ ___|'
   end
 
   def choose_check_box
     # this method will allow players to choose which check_box they want to use as X or O
   end
 
-  def is_check_box_empty?(board)
+  def check_box_empty?(board)
     # This method will check if the box on the board are empty or not
   end
 
-  def is_check_box_full?
+  def check_box_full?
     # This method checks if the box on the board are full or not
   end
 
