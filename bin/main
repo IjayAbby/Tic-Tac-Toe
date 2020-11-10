@@ -2,11 +2,6 @@
 # rubocop:disable all
 require_relative '../lib/board'
 
-class TicTacToe
-  def initialize
-    banner
-  end
-
   def banner
     puts 'Welcome To Tic-Tac-Toe Game'
     puts '  ___ ___ ___  '
@@ -19,47 +14,66 @@ class TicTacToe
     puts '               '
   end
 
-  def run
-    player_x = Player.new
-    player_o = Player.new
-    puts "Player #{player_x.name} - #{player_x.symbol} \n Player #{player_o.name} - #{player_o.symbol} "
+  def display_board(board)
+    puts ' ___ ___ ___'
+    puts "|_#{board[0]}_|_#{board[1]}_|_#{board[2]}_|"
+    puts "|_#{board[3]}_|_#{board[4]}_|_#{board[5]}_|"
+    puts "|_#{board[6]}_|_#{board[7]}_|_#{board[8]}_|"
+  end
+
+  def name
+    print 'Enter the name of first player: '
+    player_x = gets.chomp
+    print 'Enter the name of second player: '
+    player_o = gets.chomp
+    puts "Player #{player_x} - X \n Player #{player_o} - O "
     puts ''
-
-    board = Board.new(player_x, player_o)
-    board.run_game
-  end
-end
-
-class Player
-  attr_reader :name, :symbol
-
-  def initialize
-    @@total_player = if !defined?(@@total_player)
-                       1
-                     else
-                       2
-                     end
-
-    gett_name
-    gett_symbol
+    [player_x, player_o]
   end
 
-  def gett_name
-    # Add for the players Name
-    if @@total_player == 1
-      puts 'Enter Player1 Name'
-      @name = gets.chomp.capitalize
-    elsif @@total_player == 2
-      puts 'Enter Player2 Name'
-      @name = gets.chomp.capitalize
+  def get_user_input(turn, name1, name2)
+    if turn == 'player_a'
+      print "#{name1.upcase}, please enter your position: "
+    else
+      print "#{name2.upcase}, please enter your position: "
     end
+    gets.chomp
   end
 
-  def gett_symbol
-    # Add Symbol to each player e.g if player1 = X and player2 = O
-    @symbol = @@total_player == 1 ? 'X' : 'O'
+  def valid_input(board, position)
+    until board.check_box_empty?(position)
+      puts 'Input Error: Please Enter Selected Position (1-9)' unless position.to_i.between?(1,9)
+      puts 'Input Error: ' if board.check_box_full?(position)
+      position = gets.chomp
+      break if position.to_i.between?(1,9)
+    end
+    position
+  end
+
+  def update_board(position, current_playe)
+    nil
+  end
+
+
+banner
+name_a, name_b = name
+board = Board.new
+count = 1
+game_on = true
+winner = true
+while game_on 
+  display_board(board.board)
+  player_turn = board.turn(count)
+  position = get_user_input(player_turn, name_a, name_b)
+  valid_position= valid_input(board, position)
+  # update_board(valid_position, player_turn)
+  if winner
+    game_on =false
   end
 end
 
-start = TicTacToe.new
-start.run
+puts "#{name_b} has won the Game"
+puts "It's a Draw sorry | Do you want to play Again?"
+
+
+ 
