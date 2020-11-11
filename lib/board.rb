@@ -20,29 +20,38 @@ class Board
     end
   end
 
-  def start_game(_player)
+  def start_game(player)
     # Start game and defined players name and symbol
-    nil
+    puts "\n#{player.name} starts!"
+    display_number
+    # choice = choose_check_box
+    # modify_board(player, choice)
+    display_board(@check_box)
+    turn(player)
   end
 
-  def play_game(_player)
+  def play_game(player)
     # continue Playing Game
-    nil
+    puts "\nIt's your turn, #{player.name}!"
+    # choice = choose_check_box
+    # modify_board(player, choice)
+    display_board(@check_box)
+    turn(player)
   end
 
   def display_board(board)
     # this method will Display the Board
-    puts '___ ___ ___'
+    puts ' ___ ___ ___'
     (0..2).each do |i|
-      print "|_#{board[i]}__"
+      print "|_#{board[i]}_"
     end
     puts '|'
     (3..5).each do |i|
-      print "|_#{board[i]}__"
+      print "|_#{board[i]}_"
     end
     puts '|'
     (6..8).each do |i|
-      print "|_#{board[i]}__"
+      print "|_#{board[i]}_"
     end
     puts '|'
     puts ' '
@@ -97,7 +106,8 @@ class Board
 
   def turn(player)
     # This method will Change player's Turn for next move
-    player.odd? ? 'player_x' : 'player_o'
+    # player.odd? ? 'player_x' : 'player_o'
+    player == @player_x ? play_game(@player_o) : play_game(@player_x)
   end
 
   def play_again?
