@@ -12,6 +12,10 @@ class Board
     empty
     puts 'Who would like to begin?'
     player = gets.chomp.capitalize
+    while player.empty? || (player != @player_x.name && player != @player_o.name)
+      puts 'Not Correct Name or Name is empty Please Write Correct Name and Try Again! '
+      player = gets.chomp.capitalize
+    end
     player == @player_x.name ? start_game(@player_x) : start_game(@player_o)
   end
 
@@ -24,7 +28,7 @@ class Board
 
   def start_game(player)
     # Start game and defined players name and symbol
-    puts "\n#{player.name} starts!"
+    puts "\n#{player.name} starts! \n"
     display_number
     choice = choose_check_box
     update_display_board(player, choice)
@@ -34,7 +38,7 @@ class Board
 
   def play_game(player)
     # continue Playing Game
-    puts "\nIt's your turn, #{player.name}!"
+    puts "\nIt's your turn, #{player.name}! \n"
     choice = choose_check_box
     update_display_board(player, choice)
     display_board(@check_box)
@@ -61,9 +65,10 @@ class Board
 
   def display_number
     # This method will Display the numbers inside the Board.
-    @check_box_number = @check_box.each_with_index.map do |_value, _indx|
-      if @check_box == '_'
-        (i + 1).to_s
+    puts 'Here are your choices:'
+    @check_box_number = @check_box.each_with_index.map do |value, indx|
+      if value == '_'
+        (indx + 1).to_s
       else
         '_'
       end
@@ -73,13 +78,14 @@ class Board
 
   def choose_check_box
     # this method will allow players to choose which check_box they want to use as X or O
+    puts "Enter your choice Number (1-9)"
     choice = gets.chomp
     # display_number
     choice = choice.to_i
     @check_box.each do |_i|
       while !choice.to_i.between?(1, 9) || !check_box_empty?(choice)
-        puts "That's not a Valid Number! or Cell is Empty"
-        print 'Enter a Number between (1-9): '
+        puts "That's not a Valid Number! or Cell is Empty \n"
+        puts "Enter a Number between (1-9):"
         choice = gets.chomp.to_i
       end
     end
@@ -103,12 +109,35 @@ class Board
 
   def winner?
     # This method will check for the Winner
-    nil
+    win_move = false
+    @row = [
+      [@check_box[0], @check_box[1], @check_box[2]],
+      [@check_box[3], @check_box[4], @check_box[5]],
+      [@check_box[6], @check_box[7], @check_box[8]],
+      [@check_box[0], @check_box[3], @check_box[6]],
+      [@check_box[1], @check_box[4], @check_box[7]],
+      [@check_box[2], @check_box[5], @check_box[8]],
+      [@check_box[0], @check_box[4], @check_box[8]],
+      [@check_box[6], @check_box[4], @check_box[2]],
+    ]
+    @row.each do |row|
+      if row.all? { |i| i == 'O' }
+        win_move = true
+        break
+      elsif row.all? { |i| i == 'X' }
+        win_move = true
+        break
+      else
+        win_move = false
+      end
+    end
+    win_move
   end
 
   def draw
     # This method will chekc for the Draw when none of the player won the game
-    nil
+    puts 'The board is full, and No one won!, It\'s a Tie'
+    play_again?
   end
 
   def victory(player)
@@ -125,26 +154,31 @@ class Board
     player == @player_x ? play_game(@player_o) : play_game(@player_x)
   end
 
+  def quit_game
+    quit = ''
+    puts 'Do you want to Exit the Game? (Y/N)'
+      while quit != 'Y' || quit != 'N'
+        quit = gets.chomp.upcase
+        if quit == 'Y'
+          abort
+        else
+          play_again?
+        end
+      end
+  end
+
   def play_again?
     # this method will invoke after the game is either Draw or one of the player has won the game
-    puts 'Play Again? (Y/N)'
+    puts 'Do you want to Play Again? (Y/N)'
     response = ''
-    quit = ''
+    # quit = ''
     while response != 'Y' || response != 'N'
       response = gets.chomp.upcase
       if response == 'Y'
         board = Board.new(@player_x, @player_o)
-        board.start_game
+        board.run_game
       elsif response == 'N'
-        puts 'Do you want to Exit the Game? (Y/N)'
-        while quit != ' Y' || quit != 'N'
-          quit = get.chomp.upcase
-          if quit == 'Y'
-            abort
-          else
-            play_again?
-          end
-        end
+        quit_game
       else
         puts 'Please Enter (Y/N)'
       end
