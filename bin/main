@@ -24,6 +24,7 @@ require_relative '../lib/board'
   end
 
   def name
+    # Allow users to input the name
     print 'Enter the name of first player: '
     player_x = gets.chomp
     print 'Enter the name of second player: '
@@ -34,6 +35,7 @@ require_relative '../lib/board'
   end
 
   def get_user_input(turn, name1, name2)
+    # Check user move
     if turn == 'player_a'
       print "#{name1.upcase}, please enter your position: "
     else
@@ -43,6 +45,7 @@ require_relative '../lib/board'
   end
 
   def valid_input(board, position,name1, name2)
+    # Checks the user position input on the board and throws error if inpt is not a number between 1 - 9 
     win_move = [1,2,3]
     p_1 = []
     p_2 = []
@@ -75,7 +78,8 @@ require_relative '../lib/board'
     # position
   end
 
-  def update_board(position, current_playe, p_a, p_b)
+  def update_board(position, current_player, p_a, p_b)
+    # update the board
     nil
   end
 
@@ -84,6 +88,7 @@ class Player
   attr_accessor :character
 
   def initialize(name, character)
+    # initialize the user name and assigns character 
     @name = name
     @character = character
   end
@@ -113,4 +118,3 @@ end
 puts "It's a Draw sorry | Do you want to play Again?"
 
 
- 
