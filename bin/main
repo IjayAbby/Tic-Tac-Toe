@@ -3,6 +3,7 @@
 require_relative '../lib/board'
 
   def banner
+    # This method will introduce the game
     puts 'Welcome To Tic-Tac-Toe Game'
     puts '  ___ ___ ___  '
     puts ' | 1 | 2 | 3 | '
@@ -15,6 +16,7 @@ require_relative '../lib/board'
   end
 
   def display_board(board)
+    # This method will display the board
     puts ' ___ ___ ___'
     puts "|_#{board[0]}_|_#{board[1]}_|_#{board[2]}_|"
     puts "|_#{board[3]}_|_#{board[4]}_|_#{board[5]}_|"
@@ -40,7 +42,7 @@ require_relative '../lib/board'
     gets.chomp
   end
 
-  def valid_input(board, position)
+  def valid_input(board, position,name1, name2)
     win_move = [1,2,3]
     p_1 = []
     p_2 = []
@@ -51,7 +53,7 @@ require_relative '../lib/board'
         puts "Valid moves! " 
         display_board(board.board)
 
-        (i % 2 == 0) ? (puts "Player1 Your turn") : (puts "Player2 Your Turn")
+        (i % 2 == 0) ? (puts "Player #{name1.upcase} Your turn") : (puts "Player #{name2.upcase} Your Turn")
         puts 'Input Error: ' if board.check_box_full?(position)
         
       end
@@ -99,7 +101,7 @@ while game_on
   display_board(board.board)
   player_turn = board.turn(counter)
   position = get_user_input(player_turn, name_a, name_b)
-  valid_position= valid_input(board, position)
+  valid_position= valid_input(board, position, name_a, name_b)
   update_board(valid_position, player_turn, player_a.character, player_b.character)
   if winner
     game_on =false

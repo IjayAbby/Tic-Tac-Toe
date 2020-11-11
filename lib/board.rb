@@ -6,9 +6,6 @@ class Board
   end
 
   def run_game
-    empty
-    puts 'Start the Game'
-    display_number
     # This method will invoke at the beging of the game from  main class
   end
 
@@ -34,11 +31,6 @@ class Board
 
   def display_number
     # This method will Display the numbers inside the Board.
-    puts ' ___ ___ ___'
-    puts '|_1_ _2_ _3_|'
-    puts '|_4_ _5_ _6_|'
-    puts '|_7_ _8_ _9_|'
-    puts '|___ ___ ___|'
   end
 
   def choose_check_box
