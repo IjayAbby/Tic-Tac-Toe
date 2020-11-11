@@ -41,38 +41,73 @@ require_relative '../lib/board'
   end
 
   def valid_input(board, position)
-    until board.check_box_empty?(position)
-      puts 'Input Error: Please Enter Selected Position (1-9)' unless position.to_i.between?(1,9)
-      puts 'Input Error: ' if board.check_box_full?(position)
+    win_move = [1,2,3]
+    p_1 = []
+    p_2 = []
+    board.board.length.times do |i|
+      unless position.to_i.between?(1,9)
+        puts 'Input Error: Please Enter Selected Position (1-9)' 
+      else 
+        puts "Valid moves! " 
+        display_board(board.board)
+
+        (i % 2 == 0) ? (puts "Player1 Your turn") : (puts "Player2 Your Turn")
+        puts 'Input Error: ' if board.check_box_full?(position)
+        
+      end
+      i.odd? && position.to_i.between?(1,9) ? p_2.push(position.to_i) : p_1.push(position.to_i)
+
+      if win_move ==  p_1 
+        puts "Player1 won"
+        break
+      elsif win_move == p_2
+        puts "player2 Won"
+        break
+      end
+
       position = gets.chomp
-      break if position.to_i.between?(1,9)
+
+      
     end
-    position
+   
+    # position
   end
 
-  def update_board(position, current_playe)
+  def update_board(position, current_playe, p_a, p_b)
     nil
   end
 
+class Player
+  attr_reader :name
+  attr_accessor :character
+
+  def initialize(name, character)
+    @name = name
+    @character = character
+  end
+end
 
 banner
 name_a, name_b = name
+player_a = Player.new(name_a, 'X')
+player_b = Player.new(name_b, 'O')
 board = Board.new
-count = 1
+counter = 1
 game_on = true
 winner = true
 while game_on 
   display_board(board.board)
-  player_turn = board.turn(count)
+  player_turn = board.turn(counter)
   position = get_user_input(player_turn, name_a, name_b)
   valid_position= valid_input(board, position)
-  # update_board(valid_position, player_turn)
+  update_board(valid_position, player_turn, player_a.character, player_b.character)
   if winner
     game_on =false
   end
+  counter += 1
 end
 
-puts "#{name_b} has won the Game"
+# puts "#{name_b} has won the Game"
 puts "It's a Draw sorry | Do you want to play Again?"
 
 
