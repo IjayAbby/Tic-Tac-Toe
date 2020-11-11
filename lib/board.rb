@@ -24,7 +24,7 @@ class Board
     # Start game and defined players name and symbol
     puts "\n#{player.name} starts!"
     display_number
-    # choice = choose_check_box
+    choice = choose_check_box
     # modify_board(player, choice)
     display_board(@check_box)
     turn(player)
@@ -33,7 +33,7 @@ class Board
   def play_game(player)
     # continue Playing Game
     puts "\nIt's your turn, #{player.name}!"
-    # choice = choose_check_box
+    choice = choose_check_box
     # modify_board(player, choice)
     display_board(@check_box)
     turn(player)
@@ -71,12 +71,22 @@ class Board
 
   def choose_check_box
     # this method will allow players to choose which check_box they want to use as X or O
-    nil
+    choice = gets.chomp
+    # display_number
+    choice = choice.to_i
+    @check_box.each do |_i|
+      while !choice.to_i.between?(1, 9) || !check_box_empty?(choice)
+        puts "That's not a Valid Number! or Cell is Empty"
+        print 'Enter a Number between (1-9): '
+        choice = gets.chomp.to_i
+      end
+    end
+    choice
   end
 
-  def check_box_empty?(_boardd)
+  def check_box_empty?(cell)
     # This method will check if the box on the board are empty or not
-    nil
+    @check_box[cell - 1] == '_'
   end
 
   def check_box_full?(_postion)
