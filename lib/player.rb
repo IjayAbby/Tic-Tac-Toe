@@ -1,3 +1,5 @@
+# rubocop:disable all
+
 class Player
   attr_reader :name, :symbol
 

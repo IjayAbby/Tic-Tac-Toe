@@ -1,3 +1,5 @@
+# rubocop:disable all
+
 class Board
   def initialize(player_x, player_o)
     @check_box = []
@@ -25,7 +27,7 @@ class Board
     puts "\n#{player.name} starts!"
     display_number
     choice = choose_check_box
-    # modify_board(player, choice)
+    update_display_board(player, choice)
     display_board(@check_box)
     turn(player)
   end
@@ -34,7 +36,7 @@ class Board
     # continue Playing Game
     puts "\nIt's your turn, #{player.name}!"
     choice = choose_check_box
-    # modify_board(player, choice)
+    update_display_board(player, choice)
     display_board(@check_box)
     turn(player)
   end
@@ -91,7 +93,7 @@ class Board
 
   def check_box_full?
     # This method checks if the box on the board are full or not
-    @check_box.all? { |i| i != '_'}
+    @check_box.all? { |i| i != '_' }
   end
 
   def update_display_board(player, choice)
@@ -125,6 +127,27 @@ class Board
 
   def play_again?
     # this method will invoke after the game is either Draw or one of the player has won the game
-    nil
+    puts 'Play Again? (Y/N)'
+    response = ''
+    quit = ''
+    while response != 'Y' || response != 'N'
+      response = gets.chomp.upcase
+      if response == 'Y'
+        board = Board.new(@player_x, @player_o)
+        board.start_game
+      elsif response == 'N'
+        puts 'Do you want to Exit the Game? (Y/N)'
+        while quit != ' Y' || quit != 'N'
+          quit = get.chomp.upcase
+          if quit == 'Y'
+            abort
+          else
+            play_again?
+          end
+        end
+      else
+        puts 'Please Enter (Y/N)'
+      end
+    end
   end
 end
