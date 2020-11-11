@@ -1,17 +1,23 @@
 class Board
-  attr_accessor :board
-
-  def initialize
-    @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  def initialize(player_x, player_o)
+    @check_box = []
+    @player_x = player_x
+    @player_o = player_o
   end
 
   def run_game
     # This method will invoke at the beging of the game from  main class
+    empty
+    puts 'Who would like to begin?'
+    player = gets.chomp.capitalize
+    player == @player_x.name ? start_game(@player_x) : start_game(@player_o)
   end
 
   def empty
     # check if the board is empty or not
-    nil
+    9.times do
+      @check_box.push('_')
+    end
   end
 
   def start_game(_player)
@@ -24,13 +30,34 @@ class Board
     nil
   end
 
-  def display_board(_board)
+  def display_board(board)
     # this method will Display the Board
-    nil
+    puts '___ ___ ___'
+    (0..2).each do |i|
+      print "|_#{board[i]}__"
+    end
+    puts '|'
+    (3..5).each do |i|
+      print "|_#{board[i]}__"
+    end
+    puts '|'
+    (6..8).each do |i|
+      print "|_#{board[i]}__"
+    end
+    puts '|'
+    puts ' '
   end
 
   def display_number
     # This method will Display the numbers inside the Board.
+    @check_box_number = @check_box.each_with_index.map do |_value, _indx|
+      if @check_box == '_'
+        (i + 1).to_s
+      else
+        '_'
+      end
+    end
+    display_board(@check_box_number)
   end
 
   def choose_check_box
