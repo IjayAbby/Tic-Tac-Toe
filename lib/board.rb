@@ -89,14 +89,14 @@ class Board
     @check_box[cell - 1] == '_'
   end
 
-  def check_box_full?(_postion)
+  def check_box_full?
     # This method checks if the box on the board are full or not
-    nil
+    @check_box.all? { |i| i != '_'}
   end
 
-  def update_display_board(_player, _choice)
+  def update_display_board(player, choice)
     # This method will update the display board after each move
-    nil
+    @check_box[choice - 1] = player.symbol
   end
 
   def winner?
@@ -109,14 +109,17 @@ class Board
     nil
   end
 
-  def victory(_player)
+  def victory(player)
     # this method will output which player has won the game
-    nil
+    puts "The winner is #{player.name}. Congratulations!"
+    play_again?
   end
 
   def turn(player)
     # This method will Change player's Turn for next move
     # player.odd? ? 'player_x' : 'player_o'
+    victory(player) if winner?
+    draw if check_box_full?
     player == @player_x ? play_game(@player_o) : play_game(@player_x)
   end
 
