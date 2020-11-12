@@ -10,8 +10,9 @@
 <p align="center"> 
   
 <img src="https://img.shields.io/github/issues/IjayAbby/Tic-Tac-Toe?style=for-the-badge" alt="issues" >
-<img src="https://img.shields.io/github/issues-pr/IjayAbby/Tic-Tac-Toe?style=for-the-badge" alt="pull request" >
 <img src="https://img.shields.io/github/license/IjayAbby/Tic-Tac-Toe?style=for-the-badge" alt="Licence" >
+<img src="https://img.shields.io/github/issues-pr/IjayAbby/Tic-Tac-Toe?style=for-the-badge" alt="pull request" >
+
 
 </p>
 
