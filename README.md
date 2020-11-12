@@ -45,17 +45,18 @@ This project requires to complete the following milestones:
 
 To get a local copy up and running follow these simple example steps.
 
-1. On the project GitHub page, navigate to the main page of the repository.
-2. Under the repository name, locate and click on a green button named `Code`.
-3. Copy the project URL as displayed.
-4. If you're running the Windows Operating System, open your command prompt. On Linux, Open your terminal.
-5. Change the current working directory to the location where you want the cloned directory to be made. Leave as it is if the current location is where you want the project to be.
-6. Type git clone, and then paste the URL you copied in Step 3. <br>
-   e.g. \$ git clone https://github.com/yourUsername/yourProjectName
-7. Press Enter. Your local copy will be created.
-8. Type pry, and load the file like below:
-   `load "TicTacToe.rb"`
-9. Call methods on the pry and try it.
+1. If you're running the Windows Operating System, open your command prompt. On Linux, Open your terminal.
+
+2. Copy and paste the following code into the Terminal:
+
+
+   ``` git clone https://github.com/IjayAbby/Tic-Tac-Toe.git ```
+
+3. Press Enter.
+
+4. Once the repository has been cloned, navigate inside the repository and type: bin/main This will run the game and you will be able to play it using the terminal.
+
+5. Enjoy
 
 
 ## Game Instructions
