@@ -1,10 +1,22 @@
 # Tic-Tac-Toe
 
 ![](https://img.shields.io/badge/Microverse-blueviolet)
-![](https://img.shields.io/bitbucket/issues/IjayAbby/Tic-Tac-Toe?style=for-the-badge)
-![](https://img.shields.io/bitbucket/pr-raw/IjayAbby/Tic-Tac-Toe?style=for-the-badge)
-![](https://img.shields.io/apm/l/MIT?style=for-the-badge)
-![](https://img.shields.io/github/contributors/IjayAbby/Tic-Tac-Toe?style=for-the-badge)
+
+
+ <p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Tic_tac_toe.svg/200px-Tic_tac_toe.svg.png" alt="img" >
+ </p>
+
+<p align="center"> 
+  
+<img src="https://img.shields.io/github/issues/IjayAbby/Tic-Tac-Toe?style=for-the-badge" alt="issues" >
+<img src="https://img.shields.io/github/license/IjayAbby/Tic-Tac-Toe?style=for-the-badge" alt="Licence" >
+<img src="https://img.shields.io/github/issues-pr/IjayAbby/Tic-Tac-Toe?style=for-the-badge" alt="pull request" >
+
+
+</p>
+
+
 
 ## About the Project
 
