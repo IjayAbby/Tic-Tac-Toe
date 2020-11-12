@@ -4,35 +4,136 @@
 require_relative '../lib/board'
 require_relative '../lib/player'
 
-class TicTacToe
-  def initialize
-    banner
-  end
 
-  def banner
-    puts 'Welcome To Tic-Tac-Toe Game'
-    puts '  ___ ___ ___  '
-    puts ' | 1 | 2 | 3 | '
-    puts ' |___|___|___| '
-    puts ' | 4 | 5 | 6 | '
-    puts ' |___|___|___| '
-    puts ' | 7 | 8 | 9 | '
-    puts ' |___|___|___| '
-    puts '               '
-  end
+def banner
+  puts 'Welcome To Tic-Tac-Toe Game'
+  puts '  ___ ___ ___  '
+  puts ' | 1 | 2 | 3 | '
+  puts ' |___|___|___| '
+  puts ' | 4 | 5 | 6 | '
+  puts ' |___|___|___| '
+  puts ' | 7 | 8 | 9 | '
+  puts ' |___|___|___| '
+  puts '               '
+end
 
-  def run
-    player_x = Player.new
-    player_o = Player.new
-    puts "Player #{player_x.name} - #{player_x.symbol} \n Player #{player_o.name} - #{player_o.symbol} "
-    puts ''
+def gett_name
+  # Allow users to input the name
+  print 'Enter the name of first player: '
+  player_x = gets.chomp.capitalize
+  print 'Enter the name of second player: '
+  player_o = gets.chomp.capitalize
+  puts "Player #{player_x} - X \n Player #{player_o} - O "
+  puts ''
+  [player_x, player_o]
+end
 
-    board = Board.new(player_x, player_o)
-    board.run_game
+def display_board(board)
+  # this method will Display the Board
+  puts ' ___ ___ ___'
+  (0..2).each do |i|
+    print "|_#{board[i]}_"
   end
+  puts '|'
+  (3..5).each do |i|
+    print "|_#{board[i]}_"
+  end
+  puts '|'
+  (6..8).each do |i|
+    print "|_#{board[i]}_"
+  end
+  puts '|'
+  puts ' '
+end
+
+def display_number(board)
+  # This method will Display the numbers inside the Board.
+  puts 'Here are your choices:'
+  @check_box_number = board.check_box.each_with_index.map do |value, indx|
+    if value == '_'
+      (indx + 1).to_s
+    else
+      '_'
+    end
+  end
+  display_board(@check_box_number)
+end
+
+def choose_check_box(board)
+  # this method will allow players to choose which check_box they want to use as X or O
+  puts "Enter your choice Number (1-9)"
+  choice = gets.chomp
+  # display_number
+  choice = choice.to_i
+  board.check_box.each do |i|
+    while !choice.to_i.between?(1, 9) || !board.check_box_empty?(choice)
+      puts "That's not a Valid Number! or Cell is Empty \n"
+      puts "Enter a Number between (1-9):"
+      choice = gets.chomp.to_i
+    end
+  end
+  choice
+end
+
+def start_game(player, board)
+  # Start game and defined players name and symbol
+  puts "\n#{player.name} starts! \n"
+  display_number(board)
+  choice = choose_check_box(board)
+  board.update_display_board(player, choice)
+  display_board(board.check_box)
+  turn(player, board)
+end
+
+def play_game(player, board)
+  # continue Playing Game
+  puts "\nIt's your turn, #{player.name}! \n"
+  choice = choose_check_box(board)
+  board.update_display_board(player, choice)
+  display_board(board.check_box)
+  turn(player, board)
+end
+
+def draw
+  # This method will chekc for the Draw when none of the player won the game
+  puts 'The board is full, and No one won!, It\'s a Tie'
+  # play_again?
+  abort
+end
+
+def victory(player)
+  # this method will output which player has won the game
+  puts "The winner is #{player.name}. Congratulations!"
+  # play_again?
+  abort
+end
+
+def turn(player, board)
+  # This method will Change player's Turn for next move
+  # player.odd? ? 'player_x' : 'player_o'
+  victory(player) if board.winner?
+  draw if board.check_box_full?
+  player == @player_x ? play_game(@player_o, board) : play_game(@player_x, board)
+end
+
+def run_game(board)
+  # This method will invoke at the beging of the game from  main class
+  board.empty
+  puts 'Who would like to begin?'
+  player = gets.chomp.capitalize
+  while player.empty? || (player != @player_x.name && player != @player_o.name)
+    puts 'Not Correct Name or Name is empty Please Write Correct Name and Try Again! '
+    player = gets.chomp.capitalize
+  end
+  player == @player_x.name ? start_game(@player_x, board) : start_game(@player_o, board)
 end
 
 
+banner
+name_a, name_b = gett_name
+@player_x = Player.new(name_a, 'X')
+@player_o = Player.new(name_b, 'O')
 
-start = TicTacToe.new
-start.run
+boards = Board.new(@player_x, @player_o)
+
+run_game(boards)
