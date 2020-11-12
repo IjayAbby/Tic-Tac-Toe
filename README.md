@@ -1,6 +1,10 @@
 # Tic-Tac-Toe
 
 ![](https://img.shields.io/badge/Microverse-blueviolet)
+![](https://img.shields.io/bitbucket/issues/IjayAbby/Tic-Tac-Toe?style=for-the-badge)
+![](https://img.shields.io/bitbucket/pr-raw/IjayAbby/Tic-Tac-Toe?style=for-the-badge)
+![](https://img.shields.io/apm/l/MIT?style=for-the-badge)
+![](https://img.shields.io/github/contributors/IjayAbby/Tic-Tac-Toe?style=for-the-badge)
 
 ## About the Project
 
@@ -52,6 +56,18 @@ To get a local copy up and running follow these simple example steps.
 8. Type pry, and load the file like below:
    `load "TicTacToe.rb"`
 9. Call methods on the pry and try it.
+
+
+## Game Instructions
+Tic-Tac-Toe is a very popular game, which consists in making a sequence of three symbols in either a row, column or diagonal in a 3x3 board.
+To play the game follow the getting started steps mentioned above this file. After you done that, run the main file and follow these steps:
+- The game displays the board with the a welcome note on top.
+- You will be prompted as a first player to enter your preferred name.
+- You will be prompted as a second player to enter your preferred name.
+- You will be prompted to choose who should go first.
+- You will be provided with the choices you can pick from that is, between 1 - 9.
+- You will play in turns, in sequence till the board is full then it will announce the game results ie, draw or winner.
+- If you want to play again you can say (Y) yes or entirely quit the game by choosing (N).
 
 ## Contributing
 
