@@ -2,6 +2,22 @@
 
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
+
+ <p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Tic_tac_toe.svg/200px-Tic_tac_toe.svg.png" alt="img" >
+ </p>
+
+<p align="center"> 
+  
+<img src="https://img.shields.io/github/issues/IjayAbby/Tic-Tac-Toe?style=for-the-badge" alt="issues" >
+<img src="https://img.shields.io/github/license/IjayAbby/Tic-Tac-Toe?style=for-the-badge" alt="Licence" >
+<img src="https://img.shields.io/github/issues-pr/IjayAbby/Tic-Tac-Toe?style=for-the-badge" alt="pull request" >
+
+
+</p>
+
+
+
 ## About the Project
 
 <!-- This project is based on the . -->
@@ -41,17 +57,30 @@ This project requires to complete the following milestones:
 
 To get a local copy up and running follow these simple example steps.
 
-1. On the project GitHub page, navigate to the main page of the repository.
-2. Under the repository name, locate and click on a green button named `Code`.
-3. Copy the project URL as displayed.
-4. If you're running the Windows Operating System, open your command prompt. On Linux, Open your terminal.
-5. Change the current working directory to the location where you want the cloned directory to be made. Leave as it is if the current location is where you want the project to be.
-6. Type git clone, and then paste the URL you copied in Step 3. <br>
-   e.g. \$ git clone https://github.com/yourUsername/yourProjectName
-7. Press Enter. Your local copy will be created.
-8. Type pry, and load the file like below:
-   `load "TicTacToe.rb"`
-9. Call methods on the pry and try it.
+1. If you're running the Windows Operating System, open your command prompt. On Linux, Open your terminal.
+
+2. Copy and paste the following code into the Terminal:
+
+
+   ``` git clone https://github.com/IjayAbby/Tic-Tac-Toe.git ```
+
+3. Press Enter.
+
+4. Once the repository has been cloned, navigate inside the repository and type: bin/main This will run the game and you will be able to play it using the terminal.
+
+5. Enjoy
+
+
+## Game Instructions
+Tic-Tac-Toe is a very popular game, which consists in making a sequence of three symbols in either a row, column or diagonal in a 3x3 board.
+To play the game follow the getting started steps mentioned above this file. After you done that, run the main file and follow these steps:
+- The game displays the board with the a welcome note on top.
+- You will be prompted as a first player to enter your preferred name.
+- You will be prompted as a second player to enter your preferred name.
+- You will be prompted to choose who should go first.
+- You will be provided with the choices you can pick from that is, between 1 - 9.
+- You will play in turns, in sequence till the board is full then it will announce the game results ie, draw or winner.
+- If you want to play again you can say (Y) yes or entirely quit the game by choosing (N).
 
 ## Contributing
 
