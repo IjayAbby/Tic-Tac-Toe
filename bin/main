@@ -1,2 +1,120 @@
 #!/usr/bin/env ruby
-puts 'Hello World'
+# rubocop:disable all
+require_relative '../lib/board'
+
+  def banner
+    # This method will introduce the game
+    puts 'Welcome To Tic-Tac-Toe Game'
+    puts '  ___ ___ ___  '
+    puts ' | 1 | 2 | 3 | '
+    puts ' |___|___|___| '
+    puts ' | 4 | 5 | 6 | '
+    puts ' |___|___|___| '
+    puts ' | 7 | 8 | 9 | '
+    puts ' |___|___|___| '
+    puts '               '
+  end
+
+  def display_board(board)
+    # This method will display the board
+    puts ' ___ ___ ___'
+    puts "|_#{board[0]}_|_#{board[1]}_|_#{board[2]}_|"
+    puts "|_#{board[3]}_|_#{board[4]}_|_#{board[5]}_|"
+    puts "|_#{board[6]}_|_#{board[7]}_|_#{board[8]}_|"
+  end
+
+  def name
+    # Allow users to input the name
+    print 'Enter the name of first player: '
+    player_x = gets.chomp
+    print 'Enter the name of second player: '
+    player_o = gets.chomp
+    puts "Player #{player_x} - X \n Player #{player_o} - O "
+    puts ''
+    [player_x, player_o]
+  end
+
+  def get_user_input(turn, name1, name2)
+    # Check user move
+    if turn == 'player_a'
+      print "#{name1.upcase}, please enter your position: "
+    else
+      print "#{name2.upcase}, please enter your position: "
+    end
+    gets.chomp
+  end
+
+  def valid_input(board, position,name1, name2)
+    # Checks the user position input on the board and throws error if inpt is not a number between 1 - 9 
+    win_move = [1,2,3]
+    p_1 = []
+    p_2 = []
+    board.board.length.times do |i|
+      unless position.to_i.between?(1,9)
+        puts 'Input Error: Please Enter Selected Position (1-9)' 
+      else 
+        puts "Valid moves! " 
+        display_board(board.board)
+
+        (i % 2 == 0) ? (puts "Player #{name1.upcase} Your turn") : (puts "Player #{name2.upcase} Your Turn")
+        puts 'Input Error: ' if board.check_box_full?(position)
+        
+      end
+      i.odd? && position.to_i.between?(1,9) ? p_2.push(position.to_i) : p_1.push(position.to_i)
+
+      if win_move ==  p_1 
+        puts "Player1 won"
+        break
+      elsif win_move == p_2
+        puts "player2 Won"
+        break
+      end
+
+      position = gets.chomp
+
+      
+    end
+   
+    # position
+  end
+
+  def update_board(position, current_player, p_a, p_b)
+    # update the board
+    nil
+  end
+
+class Player
+  attr_reader :name
+  attr_accessor :character
+
+  def initialize(name, character)
+    # initialize the user name and assigns character 
+    @name = name
+    @character = character
+  end
+end
+
+banner
+name_a, name_b = name
+player_a = Player.new(name_a, 'X')
+player_b = Player.new(name_b, 'O')
+board = Board.new
+counter = 1
+game_on = true
+winner = true
+while game_on 
+  display_board(board.board)
+  player_turn = board.turn(counter)
+  position = get_user_input(player_turn, name_a, name_b)
+  valid_position= valid_input(board, position, name_a, name_b)
+  update_board(valid_position, player_turn, player_a.character, player_b.character)
+  if winner
+    game_on =false
+  end
+  counter += 1
+end
+
+# puts "#{name_b} has won the Game"
+puts "It's a Draw sorry | Do you want to play Again?"
+
+
