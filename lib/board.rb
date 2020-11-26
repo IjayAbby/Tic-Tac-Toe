@@ -2,6 +2,7 @@
 
 class Board
   attr_accessor :check_box
+  attr_reader :player_o, :player_x
 
   def initialize(player_x, player_o)
     @check_box = []
@@ -27,11 +28,14 @@ class Board
 
   def check_box_full?
     # This method checks if the box on the board are full or not
+    return false if @check_box.empty?
     @check_box.all? { |i| i != '_' }
   end
 
   def update_display_board(player, choice)
     # This method will update the display board after each move
+    return false unless choice.to_i.between?(1, 9)
+
     @check_box[choice - 1] = player.symbol
   end
 
