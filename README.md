@@ -82,6 +82,14 @@ To play the game follow the getting started steps mentioned above this file. Aft
 - You will play in turns, in sequence till the board is full then it will announce the game results ie, draw or winner.
 - If you want to play again you can say (Y) yes or entirely quit the game by choosing (N).
 
+## Testing With Rspec.
+
+- Boot up your terminal and punch in ``gem install rspec`` to install RSpec. Once that’s done, you can verify your version of RSpec with ``rspec --version``, which will output the current version of each of the packaged gems. Take a minute also to hit ``rspec --help`` and look through the various options available.
+
+- Finally, cd into a project directory that you wish to configure for use with RSpec and type ``rspec --init`` to initialize RSpec within the project. This will generate two files, ``.rspec`` and ``spec/spec_helper.rb``
+
+- To check whether your test are passing or failing, go to your terminal and type ``rspec``.
+
 ## Contributing
 
 Contributions, issues, and feature requests are welcome!
