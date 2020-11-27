@@ -1,4 +1,4 @@
-require './lib/player'
+require_relative '../lib/player'
 
 describe Player do
   let(:p1) { Player.new('player1', 'X') }

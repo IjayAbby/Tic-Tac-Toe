@@ -1,7 +1,5 @@
-# rubocop:disable Metrics/BlockLength
-
-require './lib/board'
-require './lib/player'
+require_relative '../lib/board'
+require_relative '../lib/player'
 
 describe Board do
   let(:player1) { Player.new('p1', 'X') }
@@ -13,7 +11,7 @@ describe Board do
   let(:player1_win) { %w[X X X O O _ _ _ _] }
   let(:player2_win) { %w[X X _ O O O _ _ _] }
 
-  context '#initialize' do
+  describe '#initialize' do
     it 'should check for player1' do
       expect(board.player_x).to eql(player1)
     end
@@ -25,23 +23,27 @@ describe Board do
     it 'should check if check box is an empty array' do
       expect(board.check_box).to eql(check_box)
     end
+
+    it 'should check if check box is not an empty array' do
+      expect(check_box { [4] }).to eql(check_box { [5] })
+    end
   end
 
-  context '#empty' do
+  describe '#empty' do
     it 'should check if board is empty' do
       board.empty
       expect(board.check_box).to eql((1..9).collect { '_' })
     end
   end
 
-  context '#check_box_empty?' do
-    context 'should check when check box is empty' do
+  describe '#check_box_empty?' do
+    describe 'should check when check box is empty' do
       it 'return false' do
         expect(board.check_box_empty?(5)).to eql(false)
       end
     end
 
-    context 'should return true if there is no position picked' do
+    describe 'should return true if there is no position picked' do
       before { board.empty }
       it 'should return true if no choice is given' do
         expect(board.check_box_empty?(5)).to eql(true)
@@ -54,7 +56,7 @@ describe Board do
     end
   end
 
-  context 'check_box_full?' do
+  describe '#check_box_full?' do
     it 'return false if board is empty' do
       expect(board.check_box_full?).to eql(false)
     end
@@ -67,15 +69,19 @@ describe Board do
       board.check_box = board_not_full
       expect(board.check_box_full?).to eql(false)
     end
+
+    it 'should return false if all cells are empty' do
+      expect(check_box.all?).to eql(check_box.all? { |i| i != '_' })
+    end
   end
 
-  context '#update_display_board' do
+  describe '#update_display_board' do
     before do
       board.empty
       @player_choice = board.update_display_board(player, choice)
     end
 
-    context 'when player choice is between the range of 1-9' do
+    describe 'when player choice is between the range of 1-9' do
       let(:choice) { 4 }
       let(:player) { player1 }
 
@@ -84,7 +90,7 @@ describe Board do
       end
     end
 
-    context 'when choice of player is not between the range of 1-9' do
+    describe 'when choice of player is not between the range of 1-9' do
       let(:choice) { 10 }
       let(:player) { player1 }
       it 'returns nil' do
@@ -92,7 +98,7 @@ describe Board do
       end
     end
 
-    context 'when a player inputs a string as a choice' do
+    describe 'when a player inputs a string as a choice' do
       let(:choice) { 'me' }
       let(:player) { player2 }
       it 'return should return false' do
@@ -100,8 +106,16 @@ describe Board do
       end
     end
 
-    context 'when a player choice is a float' do
+    describe 'when a player choice is a float' do
       let(:choice) { 6.8 }
+      let(:player) { player2 }
+      it 'return the player symbol and update the check_box' do
+        expect(@player_choice).to eql(player.symbol)
+      end
+    end
+
+    describe 'when a player choice is a not float' do
+      let(:choice) { 6 }
       let(:player) { player2 }
       it 'return the player symbol and update the check_box' do
         expect(@player_choice).to eql(player.symbol)
@@ -109,30 +123,30 @@ describe Board do
     end
   end
 
-  context '#winner?' do
+  describe '#winner?' do
     before { board.empty }
-    context 'when player1 is the winner' do
+    describe 'when player1 is the winner' do
       it 'returns true' do
         board.check_box = player1_win
         expect(board.winner?).to eql(true)
       end
     end
 
-    context 'when player2 is the winner' do
+    describe 'when player2 is the winner' do
       it 'returns true' do
         board.check_box = player2_win
         expect(board.winner?).to eql(true)
       end
     end
 
-    context 'when draw' do
+    describe 'when draw' do
       it 'return false' do
         board.check_box = board_full
         expect(board.winner?).to eql(false)
       end
     end
 
-    context 'when next move is winning' do
+    describe 'when next move is winning' do
       it 'return true' do
         board.check_box = board_not_full
         board.check_box[8] = 'X'
@@ -142,4 +156,3 @@ describe Board do
     end
   end
 end
-# rubocop:enable Metrics/BlockLength
